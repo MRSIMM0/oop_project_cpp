@@ -7,7 +7,8 @@
 #include <unistd.h>
 
 #include "Screen.h"
-#include "Note.h"
+#include "../Note.h"
+#include "CommandHandler.h"
 
 class MainView : public Screen
 {
@@ -17,10 +18,11 @@ private:
     Note *notes;
     int commands_size;
     std::string *commands;
+    CommandHandler *handler;
 
 public:
     MainView(int cols, int rows, int notes_size, Note *notes, int commands_size,
-             std::string *commands) : Screen(cols, rows)
+             std::string *commands, CommandHandler &handler) : Screen(cols, rows)
     {
         this->notes_size = notes_size;
 
@@ -29,10 +31,13 @@ public:
         this->commands_size = commands_size;
 
         this->commands = commands;
+
+        this->handler = &handler;
     }
 
     std::string printTasks();
-    void printMainView();
+
+    std::string  printMainView();
 };
 
 std::string MainView::printTasks()
@@ -44,10 +49,11 @@ std::string MainView::printTasks()
     {
         result = result + tab(std::to_string(i + 1) + " " + this->notes[i].printNote(), 4, " ") + "\n";
     }
+
     return result;
 }
 
-void MainView::printMainView()
+std::string MainView::printMainView()
 {
 
     std::cout << center("TODO", "-");
@@ -75,11 +81,11 @@ void MainView::printMainView()
 
     std::string t;
 
-
-
     std::cout << createFooter(commands, commands_size, 4) << std::endl
               << "Command:";
     std::cin >> t;
+
+    handler->handle(std::atoi(t.c_str()));
 }
 
 #endif
