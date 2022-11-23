@@ -89,4 +89,5 @@ std::string Screen::createFooter(std::string commands[], int len, int space)
     return result;
 }
 
+
 #endif

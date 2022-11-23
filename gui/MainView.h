@@ -18,12 +18,13 @@ private:
     Note *notes;
     int commands_size;
     std::string *commands;
-    CommandHandler *handler;
+    // CommandHandler *handler;
 
 public:
     MainView(int cols, int rows, int notes_size, Note *notes, int commands_size,
-             std::string *commands, CommandHandler &handler) : Screen(cols, rows)
+             std::string *commands) : Screen(cols, rows)
     {
+        // CommandHandler &handler
         this->notes_size = notes_size;
 
         this->notes = notes;
@@ -32,12 +33,13 @@ public:
 
         this->commands = commands;
 
-        this->handler = &handler;
+        // this->handler = &handler;
     }
 
     std::string printTasks();
 
-    std::string  printMainView();
+    std::string printMainView();
+    std::string commandGenerator(int command);
 };
 
 std::string MainView::printTasks()
@@ -56,6 +58,9 @@ std::string MainView::printTasks()
 std::string MainView::printMainView()
 {
 
+    int com = -1;
+
+    while (1){
     std::cout << center("TODO", "-");
 
     std::string tasks = printTasks();
@@ -79,13 +84,31 @@ std::string MainView::printMainView()
     }
     std::cout << tasks;
 
-    std::string t;
-
-    std::cout << createFooter(commands, commands_size, 4) << std::endl
-              << "Command:";
-    std::cin >> t;
-
-    handler->handle(std::atoi(t.c_str()));
+       com = stoi(commandGenerator(com));
+    }
 }
+std::string MainView::commandGenerator(int command)
+{
+    std::string result[2];
 
+
+
+    std::string t;
+    if (command == -1)
+    {
+        std::cout << createFooter(commands, commands_size, 4) << std::endl
+                  << "Command:";
+        std::cin >> t;
+    }else{
+
+        std::string header[] = {"back"};
+
+        std::cout << createFooter(header, 1, 4) << std::endl
+                  << commands[command-1]<<":";
+        std::cin >> t;        
+    }
+
+    // handler->handle(std::atoi(t.c_str()));
+    return t;
+}
 #endif
