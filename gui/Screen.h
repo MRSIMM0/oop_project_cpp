@@ -18,7 +18,7 @@ public:
     Screen(int cols, int rows);
     std::string center(std::string title, std::string separator);
     std::string tab(std::string title, int tab, std::string sep);
-    std::string createFooter(std::string commands[], int len, int space);
+    std::string createFooter(std::vector<std::string> commands, int space);
 
 };
 
@@ -61,8 +61,10 @@ std::string Screen::tab(std::string title, int tab, std::string sep)
     return (result);
 }
 
-std::string Screen::createFooter(std::string commands[], int len, int space)
+std::string Screen::createFooter(std::vector<std::string> commands, int space)
 {
+
+    int len = commands.size();
 
     std::string result = "";
 
