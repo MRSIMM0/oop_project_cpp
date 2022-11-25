@@ -8,6 +8,8 @@ private:
     std::string message;
 
 public:
+
+    Note() = default;
     Note(std::string message)
     {
         this->message = message;
