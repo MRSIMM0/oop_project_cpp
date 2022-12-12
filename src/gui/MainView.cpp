@@ -1,27 +1,14 @@
-#ifndef MAIN_VIEW_H
-#define AIN_VIEW_H
+#ifndef MAINVIEW
+#define MAINVIEW
+
+
 #include <bits/stdc++.h>
 #include <sys/ioctl.h>
-#include <stdio.h>
-#include <unistd.h>
 
-#include "./MainScreen.h"
-#include "../Note.h"
-#include "../File.h"
-class MainView
-{
-public:
-    void display();    
-private:
-    File file = File("notes.txt");
-    std::vector<std::string> commands = {"Add", "Delete", "Quit"};
-    std::vector<std::string> back = {"Back - b"};
-    int commandGenerator(int command, MainScreen view,std::vector<Note> notes,std::vector<std::string> commands);
-    int handleDelete(int index, std::vector<Note> &notes);
-    void handleExit();
-};
-
-
+#include "../../include/gui/MainView.h"
+#include "../note/Note.cpp"
+#include "../file/File.cpp"
+#include "MainScreen.cpp"
 
 
 void MainView::handleExit()
@@ -40,7 +27,7 @@ int MainView::handleDelete(int index, std::vector<Note> &notes)
     return -2;
 }
 
-int MainView::commandGenerator(int command, MainScreen view,std::vector<Note> notes,std::vector<std::string> commands)
+int MainView::commandGenerator(int command, MainScreen view, std::vector<Note> notes, std::vector<std::string> commands)
 {
 
     std::string t;
@@ -80,7 +67,7 @@ int MainView::commandGenerator(int command, MainScreen view,std::vector<Note> no
             }
         }
         if (command == 2)
-        {   
+        {
             int exitcode = handleDelete(number - 1, notes);
             file.save(notes);
             return exitcode;
@@ -114,10 +101,6 @@ void MainView::display()
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
-    
-
-   
-    
     std::vector<std::string> currentCommands;
     std::vector<std::string> commands = {"Add", "Delete", "Quit"};
     std::vector<std::string> back = {"Back - b"};
@@ -127,7 +110,7 @@ void MainView::display()
 
     while (1)
     {
-         std::vector<Note> notes = file.savedNotes();
+        std::vector<Note> notes = file.savedNotes();
         if (com == -1)
         {
             currentCommands = commands;

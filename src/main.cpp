@@ -1,9 +1,5 @@
 #include <bits/stdc++.h>
-#include "./Note.h"
-#include "./gui/MainView.h"
-
-
-
+#include "./gui/MainView.cpp"
 
 int main()
 {

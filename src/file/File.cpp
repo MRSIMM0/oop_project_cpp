@@ -1,21 +1,15 @@
-#ifndef FILE_H
-#define FILE_H
+#ifndef FILE
+#define FILE
+
+#include "../../include/file/File.h"
+#include "../../include/note/Note.h"
+
 #include <bits/stdc++.h>
-#include "./Note.h"
 
-class File
+File::File(std::string fileName)
 {
-private:
-    std::string fileName;
-
-public:
-    void save(std::vector<Note> notes);
-    std::vector<Note> savedNotes();
-    File(std::string fileName)
-    {
-        this->fileName = fileName;
-    }
-};
+    this->fileName = fileName;
+}
 
 void File::save(std::vector<Note> notes)
 {

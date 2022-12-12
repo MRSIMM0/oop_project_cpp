@@ -2,10 +2,6 @@
 #define SCREEN_H
 #include <bits/stdc++.h>
 
-/*
-Abstract class for console gui
-*/
-
 class Screen
 {
 
@@ -14,21 +10,17 @@ protected:
     int rows;
 
 public:
-    Screen(int cols, int rows);
+    Screen(int cols, int rows)
+    {
+        this->cols = cols;
+        this->rows = rows;
+    }
+
     std::string center(std::string title, std::string separator);
     std::string tab(std::string title, int tab, std::string sep);
     std::string createFooter(std::vector<std::string> commands, int space);
 };
 
-Screen::Screen(int cols, int rows)
-{
-    this->cols = cols;
-    this->rows = rows;
-}
-
-/*
-Method used to center content
-*/
 std::string Screen::center(std::string title, std::string separator)
 {
 
@@ -42,9 +34,7 @@ std::string Screen::center(std::string title, std::string separator)
 
     return result;
 }
-/*
-Method used to display inforamtion (title) witch given spacing (tab) and given spearator (sep)
-*/
+
 std::string Screen::tab(std::string title, int tab, std::string sep)
 {
 
@@ -63,9 +53,7 @@ std::string Screen::tab(std::string title, int tab, std::string sep)
 
     return (result);
 }
-/*
-Method used to display page footer (commands) with spacing
-*/
+
 std::string Screen::createFooter(std::vector<std::string> commands, int space)
 {
 
