@@ -21,7 +21,7 @@ public:
         this->commands = commands;
     }
 
-    std::string printTasks();
+    std::string printedTasks();
     void createFooter();
 };
 

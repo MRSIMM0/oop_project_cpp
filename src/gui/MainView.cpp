@@ -27,7 +27,7 @@ int MainView::handleDelete(int index, std::vector<Note> &notes)
     return -2;
 }
 
-int MainView::commandGenerator(int command, MainScreen view, std::vector<Note> notes, std::vector<std::string> commands)
+int MainView::inputedCommand(int command, MainScreen view, std::vector<Note> notes, std::vector<std::string> commands)
 {
 
     std::string t;
@@ -126,7 +126,7 @@ void MainView::display()
 
         std::cout << view.center("TODO", "-");
 
-        std::string tasks = view.printTasks();
+        std::string tasks = view.printedTasks();
 
         int lines = 0;
 
@@ -147,7 +147,7 @@ void MainView::display()
 
         std::cout << tasks;
         view.createFooter();
-        com = commandGenerator(com, view, notes, commands);
+        com = inputedCommand(com, view, notes, commands);
     }
 }
 

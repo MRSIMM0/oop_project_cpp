@@ -16,9 +16,9 @@ public:
         this->rows = rows;
     }
 
-    std::string center(std::string title, std::string separator);
-    std::string tab(std::string title, int tab, std::string sep);
-    std::string createFooter(std::vector<std::string> commands, int space);
+     std::string center(std::string title, std::string separator);
+     std::string tab(std::string title, int tab, std::string sep);
+     std::string createFooter(std::vector<std::string> commands, int space);
 };
 
 std::string Screen::center(std::string title, std::string separator)

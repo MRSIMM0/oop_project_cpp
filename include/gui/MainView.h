@@ -16,7 +16,7 @@ private:
     File file = File("notes.txt");
     std::vector<std::string> commands = {"Add", "Delete", "Quit"};
     std::vector<std::string> back = {"Back - b"};
-    int commandGenerator(int command, MainScreen view,std::vector<Note> notes,std::vector<std::string> commands);
+    int inputedCommand(int command, MainScreen view,std::vector<Note> notes,std::vector<std::string> commands);
     int handleDelete(int index, std::vector<Note> &notes);
     void handleExit();
 };
