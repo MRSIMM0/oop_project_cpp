@@ -14,7 +14,7 @@ Every field in class is private so it can’t be accessed or changed directly. O
 
 ### Interfaces
 
-I used headers files as interfaces. I know that Interfaces and Header files differ in behavior  - header class does not force you to write implementation to each function - but in my opinion this is the best way of implementing interfaces in C++ since this language does not have default structure to handle interfaces (we have to make classes containing only virtual methods).
+I used headers files as interfaces. I know that Interfaces and Header files differ in behavior  - header class does not force you to write implementation to each function - but in my opinion this is the best way of implementing interfaces in C++ since this language does not have default structure to handle interfaces (we have to make classes containing only virtual methods). Athough I tried to add one abstract class to show inharetance.
 
 ### Immutability
 
