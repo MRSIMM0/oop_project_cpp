@@ -1,5 +1,7 @@
 # 151884 - To Do list.
 
+[Presentation](https://mrsimm0.github.io/oop-project-presentation/1)
+
 This is a simple terminal application with simple self-made “GUI”. It allows user to add task, and delete it. Tasks are stored in text file.
 
 This project is the first project for oop-course,it’s written in C++, and I tried to include most of topics we discussed during our classes.
